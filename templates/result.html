@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medical Bill Leverage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="topbar">
+    <div class="pill">Medical Bill Leverage</div>
+    <a href="/" class="link">Analyze Another Bill</a>
+  </div>
+
+  <div class="hero card">
+    <div class="kicker">Potential Savings Identified</div>
+    <div class="bigmoney">$ {{ potential_savings }}</div>
+
+    <div class="decision">
+      <strong>{{ emoji }} {{ verdict }}</strong>
+      <div class="muted">Leverage Score: {{ leverage_score }} / 100</div>
+    </div>
+
+    <div class="callout">
+      Billing departments handle negotiation daily. You are not being difficult.
+    </div>
+  </div>
+
+  {% if flags %}
+  <div class="card warning">
+    <strong>⚠ Possible Billing Risk Signals</strong>
+    <ul>
+      {% for flag in flags %}
+      <li>{{ flag }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <div class="card">
+    <h2>Phase 1 — Verification</h2>
+    <textarea rows="5">{{ call_script }}</textarea>
+    <button class="btn" onclick="navigator.clipboard.writeText(`{{ call_script }}`)">
+      Copy Script
+    </button>
+  </div>
+
+  {% if premium %}
+
+  <div class="card">
+    <h2>Phase 2 — Adjustment</h2>
+    <textarea rows="3">{{ phase2.coding_review }}</textarea>
+    <textarea rows="3">{{ phase2.prompt_pay }}</textarea>
+    <textarea rows="3">{{ phase2.self_pay }}</textarea>
+  </div>
+
+  <div class="card">
+    <h2>Phase 3 — Escalation</h2>
+    <textarea rows="3">{{ phase3.supervisor }}</textarea>
+    <textarea rows="3">{{ phase3.hardship }}</textarea>
+    <textarea rows="3">{{ phase3.formal_dispute }}</textarea>
+  </div>
+
+  {% else %}
+
+  <div class="card locked">
+    <h3>Unlock the Full Negotiation System</h3>
+    <p>Advanced scripts, supervisor escalation, hardship workfl ows.</p>
+    <button class="btn">Unlock Full System — $19</button>
+  </div>
+
+  {% endif %}
+
+</div>
+</body>
+</html>

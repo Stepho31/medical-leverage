@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medical Bill Leverage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="badge">No login • No uploads • 60 second check</div>
+
+    <h1>Before You Pay That Medical Bill — Check This.</h1>
+
+    <p class="sub">
+      Estimate potential savings, identify billing risk signals,
+      and get a confident negotiation script in under a minute.
+    </p>
+
+    <div class="stat">
+      Average savings identified this week: <strong>$ {{ weekly_hint }}</strong>
+    </div>
+  </div>
+
+  <form action="/analyze" method="post" class="card">
+    <div class="grid">
+
+      <div>
+        <label>Procedure / Visit Type</label>
+        <input name="procedure" required>
+      </div>
+
+      <div>
+        <label>Location</label>
+        <input name="location" required>
+      </div>
+
+      <div>
+        <label>Facility Type</label>
+        <select name="facility_type">
+          <option>Hospital</option>
+          <option>Urgent Care</option>
+          <option>Private Clinic</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Bill Amount ($)</label>
+        <input type="number" name="bill_amount" required>
+      </div>
+
+      <div class="span2">
+        <label>Insurance Status</label>
+        <select name="insurance_status">
+          <option>Insured</option>
+          <option>High Deductible</option>
+          <option>Uninsured</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn">Analyze My Bill</button>
+
+    <p class="fineprint">
+      This tool provides financial workflow guidance, not medical or legal advice.
+    </p>
+  </form>
+
+</div>
+</body>
+</html>
